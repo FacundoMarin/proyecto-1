@@ -1,18 +1,200 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- icons -->
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <!-- Two library -->
+    <script src="js/Two.js"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="css/app.css">
-
-    <title>Proyecto 1</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/app.css" />
+    <link id="theme" rel="stylesheet" href="css/lightTheme.css" />
+    <title>Shapes</title>
   </head>
-  <body>
-    <h1>Proyecto 1</h1>
+  <body class="w3-theme-dark">
+    <h1 class="w3-theme-header m-0 border-bottom shadow">Shapes</h1>
+    <ul class="container">
+      <li
+        class="w3-theme-sidebar rounded shadow border-right border-bottom"
+        id="sidebar-wrapper"
+      >
+        <div class="sidebar-heading border-bottom mt-4">
+          <a data-toggle="collapse" href="#attributes-wrapper" class="w3-theme-sidebar">
+            Attributes
+          </a>
+        </div>
+        <div id="attributes-wrapper" class="list-group collapse">
+          <div class="element-group border-top">
+            <div class="col">Layers</div>
+            <div class="col">
+              <input
+                class="slider"
+                id="layersSlider"
+                type="range"
+                min="1"
+                max="10"
+                step="1"
+                value="1"
+              />
+            </div>
+            <div class="col" id="layersNumber">1</div>
+          </div>
+          <div class="element-group border-top">
+            <div class="col-6">Shapes per layer</div>
+            <div class="col">
+              <input
+                class="input-number"
+                id="minShapesPerLayerInput"
+                type="number"
+                min="1"
+                max="5"
+                value="1"
+              />
+            </div>
+            <div class="col">
+              <input
+                class="input-number"
+                id="maxShapesPerLayerInput"
+                type="number"
+                min="1"
+                max="5"
+                value="2"
+              />
+            </div>
+          </div>
+          <div class="element-group border-top dropdown-toggle">
+            <a data-toggle="collapse" href="#generation-numbers-wrapper" class="w3-theme-sidebar">
+              Generation numbers
+            </a>
+          </div>
+          <div id="generation-numbers-wrapper" class="collapse">
+            <div class="py-2 collapse-inner rounded">
+              <div class="custom-control custom-checkbox mx-4">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="generation-checkbox1"
+                  value="1"
+                />
+                <label class="custom-control-label" for="generation-checkbox1">1</label>
+              </div>
+              <div class="custom-control custom-checkbox mx-4">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="generation-checkbox3"
+                  value="3"
+                  checked
+                />
+                <label class="custom-control-label" for="generation-checkbox3">3</label>
+              </div>
+              <div class="custom-control custom-checkbox mx-4">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="generation-checkbox4"
+                  value="4"
+                />
+                <label class="custom-control-label" for="generation-checkbox4">4</label>
+              </div>
+              <div class="custom-control custom-checkbox mx-4">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="generation-checkbox5"
+                  value="5"
+                />
+                <label class="custom-control-label" for="generation-checkbox5">5</label>
+              </div>
+              <div class="custom-control custom-checkbox mx-4">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="generation-checkbox6"
+                  value="6"
+                  checked
+                />
+                <label class="custom-control-label" for="generation-checkbox6">6</label>
+              </div>
+            </div>
+          </div>
+          <div class="element-group border-top">
+            <div class="col">
+              <button id="generate-button" type="button" class="btn btn-main">
+                Generate
+              </button>
+            </div>
+          </div>
+          <div class="element-group border-top">
+            <div class="col-6">
+              <div>Animation speed</div>
+            </div>
+            <div class="col">
+              <input
+                class="slider"
+                id="animationSpeedSlider"
+                type="range"
+                min="0"
+                max="50"
+                value="0"
+              />
+            </div>
+            <div class="col">
+              <div id="animationSpeedNumber">0</div>
+            </div>
+          </div>
+          <div class="element-group border-top">
+            <div class="col">
+              <button id="lightThemeButton" type="button" class="btn btn-main">
+                Light
+              </button>
+            </div>
+            <div class="col">
+              <button id="darkThemeButton" type="button" class="btn btn-main">
+                Dark
+              </button>
+            </div>
+          </div>
+          <div class="element-group border-top">
+            <div class="col">
+              <a
+                id="exportButton"
+                class="btn btn-main"
+                download="shapes.png"
+                href="#"
+              >
+                Export
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div id="twoWrapper"></div>
 
     <!-- JavaScript -->
     <script src="js/app.js"></script>
+    <script src="js/ShapeGeneration.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
